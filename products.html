@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Products - Nike</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+        integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Các phần sẽ được nạp động -->
+  <div id="header"></div>
+
+  <main>
+    <div id="products"></div>
+  </main>
+  
+  <div id="footer"></div>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    // Đảm bảo DOM đã sẵn sàng
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load products page components
+      async function loadProductsPage() {
+        try {
+          await Promise.all([
+            loadComponent("header", "header.html"),
+            loadComponent("products", "products.html"),
+            loadComponent("footer", "footer.html"),
+          ]);
+        } catch (error) {
+          console.error('Error loading components:', error);
+        }
+      }
+      
+      // Đợi script.js load xong
+      if (typeof loadComponent !== 'undefined') {
+        loadProductsPage();
+      } else {
+        // Nếu chưa có, đợi thêm một chút
+        setTimeout(function() {
+          if (typeof loadComponent !== 'undefined') {
+            loadProductsPage();
+          } else {
+            console.error('loadComponent function not found');
+          }
+        }, 100);
+      }
+    });
+  </script>
+   
+</body>
+</html>
+

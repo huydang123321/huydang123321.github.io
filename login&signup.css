@@ -1,0 +1,105 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #000, #111, #222);
+  overflow: hidden;
+  color: #fff;
+}
+
+/* Hiệu ứng nền chuyển động */
+body::before {
+  content: "";
+  position: fixed;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(60deg, #e472c6, #dd2476, #24c6dc, #514a9d);
+  animation: gradientMove 8s linear infinite;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+@keyframes gradientMove {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.login-box {
+  position: relative;
+  z-index: 2;
+  width: 340px;
+  padding: 40px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  text-align: center;
+  animation: fadeIn 4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.login-box h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+/*chỉnh phần nhập tên hoặc mật khẩu*/
+.login-box input {
+  width: 100%;
+  padding: 10px 15px;
+  margin: 10px 0;
+  border: none;
+  outline: none;
+  border-radius: 6px;
+  background-color: rgba(246, 10, 10, 0.1);
+  color: rgb(255, 249, 249);
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.login-box input:focus {
+  background-color: rgba(46, 43, 43, 0.2);
+}
+/*chỉnh ô đặng nhập hoặc signup#*/
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #ff512f, #dd2476);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-box button:hover {
+  background: linear-gradient(135deg, #dd2476, #ff512f);
+  transform: scale(1.05);
+}
+/*chỉnh chữ phần hỏi đăng nhập hay tạo tk*/
+.login-box p {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #ccc;
+}
+
+.login-box a {
+  color: #ff4081;
+  text-decoration: none;
+}
